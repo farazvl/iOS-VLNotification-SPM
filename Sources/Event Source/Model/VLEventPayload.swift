@@ -30,17 +30,8 @@ struct VLEventPayload:Decodable {
     
     private func getNotificationType(notificationType:String?) -> VLAppleNotificationType {
         var eventType = VLAppleNotificationType.none
-        if let notificationType {
-            switch notificationType {
-            case "USER_TV_CONNECT_WITH_MOBILE":
-                eventType = .mobileSignIn
-            case "GAME_LIVE_SCORE":
-                eventType = .scoreUpdate
-            case "GAME_STATE_CHANGE":
-                eventType = .gameState
-            default:
-                break
-            }
+        if let notificationType, let appleNotificationType = VLAppleNotificationType(rawValue: notificationType) {
+            eventType = appleNotificationType
         }
         return eventType
     }

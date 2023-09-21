@@ -71,6 +71,7 @@ final class VLEventSourceConnector:NSObject, URLSessionDataDelegate {
     func urlSession(_ session: URLSession,
                            task: URLSessionTask,
                            didCompleteWithError error: Error?) {
+		print(#function)
         delegate?.urlSession(session, task: task, didCompleteWithError: error)
     }
 
@@ -79,10 +80,12 @@ final class VLEventSourceConnector:NSObject, URLSessionDataDelegate {
                            dataTask: URLSessionDataTask,
                            didReceive response: URLResponse,
                            completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+		print(#function)
         delegate?.urlSession(session, dataTask: dataTask, didReceive: response, completionHandler: completionHandler)
     }
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+		print(#function)
         delegate?.urlSession(session, dataTask: dataTask, didReceive: data)
     }
 }

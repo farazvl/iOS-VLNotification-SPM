@@ -8,6 +8,7 @@ public class VLAppleNotificationService {
     private var authorizationToken:String {
         didSet {
             self.tokenDetails = TokenParser().parseToken(using: JWTTokenParser(), for: authorizationToken)
+            self.eventSource?.authorizationToken = authorizationToken
         }
     }
     

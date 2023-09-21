@@ -7,9 +7,11 @@
 
 import Foundation
 
-public enum VLAppleNotificationType {
-    case mobileSignIn
-    case scoreUpdate
-    case gameState
+public enum VLAppleNotificationType: String {
+    case mobileSignIn = "USER_TV_CONNECT_WITH_MOBILE"
+    case scoreUpdate = "GAME_LIVE_SCORE"
+    case gameState = "GAME_STATE_CHANGE"
+    case gameHighlights = "GAME_HIGHLIGHTS_UPDATED"
+	case deviceRemoved = "USER_DEVICE_REMOVED"
     case none
 }

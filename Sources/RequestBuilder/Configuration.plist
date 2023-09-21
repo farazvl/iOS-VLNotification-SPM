@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>ApiUrl</key>
-	<string>https://event.develop.monumentalsportsnetwork.com</string>
+	<string>https://event.qa.monumentalsportsnetwork.com</string>
 </dict>
 </plist>

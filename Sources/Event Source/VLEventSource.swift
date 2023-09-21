@@ -21,6 +21,11 @@ class VLEventSource: NSObject, URLSessionDataDelegate, VLEventSourceConnectionPr
     private let logger: OSLog = OSLog(subsystem: "com.viewlift.notificationService", category: "VLEventSource")
     #endif
 
+    var authorizationToken: String?{
+        didSet {
+            self.eventParser?.authorizationToken = authorizationToken
+        }
+    }
     private var config:VLAppleNotificationService.DefaultConfig
     private let delegateQueue:DispatchQueue = DispatchQueue(label: "VLEventSourceQueue")
     private(set) var connectionState:ConnectionState = .notStarted

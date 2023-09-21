@@ -13,16 +13,22 @@ public struct VLScoreUpdatePayload:Decodable {
         case inprogress = "inprogress"
         case notStarted = "notStarted"
         case completed = "completed"
+		case overtime = "overtime"
+		case half = "halftime"
         
         static func getGameStatus(status:String) -> GameStatus {
             var gameState = GameStatus.notStarted
             switch status.lowercased() {
-            case "inprogress", "halftime":
+            case "inprogress":
                 gameState = .inprogress
             case "notstarted", "open":
                 gameState = .notStarted
             case "completed":
                 gameState = .completed
+			case "overtime", "overttime":
+				gameState = .overtime
+			case "halftime":
+				gameState = .half
             default:
                 break
             }
@@ -80,15 +86,18 @@ public struct VLScoreUpdatePayload:Decodable {
     public let awayPoint:Int?
     private let status:String?
     public let type:String?
+	public let sequence: Int?
     public let number:Int?
     public var gameStatus:GameStatus?
     public var gamePeriod:GamePeriod?
+	public let scoreDescription: String?
     
     public var contentId:String?
     public var contentType:String?
     
     private enum CodingKeys:String, CodingKey {
-        case homePoint, awayPoint, status, type, number
+        case homePoint, awayPoint, status, type, number, sequence
+		case scoreDescription = "description"
     }
     
     public init(from decoder: Decoder) throws {
@@ -98,6 +107,8 @@ public struct VLScoreUpdatePayload:Decodable {
         self.status = try? container.decodeIfPresent(String.self, forKey: .status)
         self.type = try? container.decodeIfPresent(String.self, forKey: .type)
         self.number = try? container.decodeIfPresent(Int.self, forKey: .number)
+		self.sequence = try? container.decodeIfPresent(Int.self, forKey: .sequence)
+		self.scoreDescription = try? container.decodeIfPresent(String.self, forKey: .scoreDescription)
         setGameStatus()
         setGamePeriod()
     }
