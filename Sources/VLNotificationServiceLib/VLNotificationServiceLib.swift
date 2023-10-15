@@ -72,7 +72,7 @@ extension VLAppleNotificationService:VLAPIRequestParamBuilder, VLRequestAPIBuild
         /// Additional headers to be set on the request
         var headers: [String: String]
         /// The minimum amount of time to wait before reconnecting after a failure
-        var reconnectTime: TimeInterval = 1.0
+        var minReconnectTime: TimeInterval = 7.0
         /// The maximum amount of time to wait before reconnecting after a failure
         var maxReconnectTime: TimeInterval = 30.0
         /// The minimum amount of time for an EventSource connection to remain open before allowing connection

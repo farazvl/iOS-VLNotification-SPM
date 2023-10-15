@@ -42,7 +42,7 @@ class VLEventSource: NSObject, URLSessionDataDelegate, VLEventSourceConnectionPr
 
     init(config: VLAppleNotificationService.DefaultConfig) {
         self.config = config
-        self.reconnectTime = config.reconnectTime
+        self.reconnectTime = config.minReconnectTime
     }
 
     func start() {
@@ -111,9 +111,7 @@ class VLEventSource: NSObject, URLSessionDataDelegate, VLEventSourceConnectionPr
             reconnectionAttempts = 0
         }
 
-        let maxSleep = min(config.maxReconnectTime, reconnectTime * pow(2.0, Double(reconnectionAttempts)))
-        let sleep = maxSleep / 2 + Double.random(in: 0...(maxSleep/2))
-
+        let sleep = min(config.maxReconnectTime, Double.random(in: reconnectTime...(reconnectTime + 7)))
         #if !os(Linux)
         os_log("Waiting %.3f seconds before reconnecting...", log: logger, type: .info, sleep)
         #endif
