@@ -16,7 +16,7 @@ let package = Package(
             targets: ["VLNotificationServiceLib"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/farazvl/VLBeaconSwift.git", from: "1.0.3")
+        .package(url: "https://github.com/farazvl/VLBeaconSwift.git", branch: "beacon_fix")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
