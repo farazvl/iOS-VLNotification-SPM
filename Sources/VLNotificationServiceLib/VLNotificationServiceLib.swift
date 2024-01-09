@@ -20,6 +20,7 @@ public class VLAppleNotificationService {
         self.authorizationToken = authToken
         self.eventHandler = eventHandler
         self.tokenDetails = JWTTokenParser().jwtTokenParser(jwtToken: authToken)
+        
     }
     
     public func updateAuthorizationToken(_ updatedToken:String) {
