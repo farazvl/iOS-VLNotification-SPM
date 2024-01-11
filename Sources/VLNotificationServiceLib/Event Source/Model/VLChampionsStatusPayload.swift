@@ -8,8 +8,12 @@
 import Foundation
 
 public struct VLChampionsStatusPayload: Decodable {
-    public let championsData: String?
+    public let championsData: VLGolfStatsChampionsData?
     public let golfStats: GolfStats?
+}
+
+public struct VLGolfStatsChampionsData: Decodable {
+    public let id: String?
 }
 
 public struct GolfStats: Decodable {

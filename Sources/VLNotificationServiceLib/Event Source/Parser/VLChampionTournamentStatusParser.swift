@@ -24,7 +24,8 @@ struct VLChampionTournamentStatusParser: VLEventPayloadParser {
             let deviceRemove = try JSONDecoder().decode(VLChampionsStatusPayload.self, from: payloadData)
             return deviceRemove
         }
-        catch {
+        catch let error {
+            debugPrint(error.localizedDescription)
             throw VLEventParseError.dataParseError
         }
     }
