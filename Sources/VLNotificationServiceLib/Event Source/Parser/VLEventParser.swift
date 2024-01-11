@@ -46,6 +46,8 @@ struct VLEventParser: VLEventParserProtocol, VLBeaconEventProtocols {
                 try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLGameHighlightsPayloadParser())
 			case .deviceRemoved:
 				try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLDeviceRemovePayloadParser())
+            case .championTournamentStatus:
+                try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLChampionTournamentStatusParser())
             default:
                 break
             }
