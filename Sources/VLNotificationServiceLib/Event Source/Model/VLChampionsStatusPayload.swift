@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by NexG on 11/01/24.
 //
@@ -8,23 +8,23 @@
 import Foundation
 
 public struct VLChampionsStatusPayload: Decodable {
-    let championsData: String?
-    let golfStats: GolfStats?
+    public let championsData: String?
+    public let golfStats: GolfStats?
 }
 
 public struct GolfStats: Decodable {
     
-    let currentRound: GolfStatRoundName?
-    let currentStatusIdentifier: GameStateMiamiLeaderboard?
-    let eventStatus: GameStateMiamiLeaderboard?
-    let roundStates: [GolfStatRound]?
+    public let currentRound: GolfStatRoundName?
+    public let currentStatusIdentifier: GameStateMiamiLeaderboard?
+    public let eventStatus: GameStateMiamiLeaderboard?
+    public let roundStates: [GolfStatRound]?
     
 }
 
 public struct GolfStatRound: Decodable {
     
-    let round: GolfStatRoundName?
-    let statusIdentifier: GameStateMiamiLeaderboard?
+    public let round: GolfStatRoundName?
+    public let statusIdentifier: GameStateMiamiLeaderboard?
     
 }
 
@@ -43,7 +43,7 @@ public enum GolfStatRoundName: Int, Codable, CaseIterable{
     case semiFinal = 2
     case finalRound = 3
     
-    var roundNumber: String {
+    public var roundNumber: String {
         get {
             switch self {
             case.noRound:
