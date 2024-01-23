@@ -14,6 +14,7 @@ enum VLEventParseError:Error {
     case gameStatePayloadParserError
     case gameHighlightsPayloadParserError
 	case deviceRemovePayloadParseError
+    case playerUpdatePayloadParseError
 }
 
 protocol VLEventParserProtocol {
@@ -48,6 +49,8 @@ struct VLEventParser: VLEventParserProtocol, VLBeaconEventProtocols {
 				try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLDeviceRemovePayloadParser())
             case .championTournamentStatus:
                 try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLChampionTournamentStatusParser())
+            case .playerUpdate:
+                try parsePayloadInEventPayload(eventPayload: eventPayload, eventPayloadParser: VLPlayerUpdatePayloadParser())
             default:
                 break
             }

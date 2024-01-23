@@ -14,5 +14,6 @@ public enum VLAppleNotificationType: String {
     case gameHighlights = "GAME_HIGHLIGHTS_UPDATED"
 	case deviceRemoved = "USER_DEVICE_REMOVED"
     case championTournamentStatus = "CHAMPION_TOURNAMENT_STATUS_UPDATE"
+    case playerUpdate = "LIVE_GOLF_PLAYER_NEXT_STROKE_CAM"
     case none
 }
