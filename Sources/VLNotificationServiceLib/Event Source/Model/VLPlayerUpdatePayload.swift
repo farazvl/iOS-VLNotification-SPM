@@ -8,13 +8,12 @@
 import Foundation
 
 public struct VLPlayerUpdatePayload: Codable {
-    
     public let playerData: PlayerData?
-    public let contentMetadata: ContentMetadata?
+    public let contentMetaData: ContentMetaData?
     
     private enum CodingKeys: String, CodingKey {
         case playerData = "payload"
-        case contentMetadata = "contentMeta"
+        case contentMetaData = "contentMeta"
     }
     
     public struct PlayerData: Codable {
@@ -31,11 +30,11 @@ public struct VLPlayerUpdatePayload: Codable {
         }
     }
     
-    public struct ContentMetadata:Codable {
-        let contentId:String?
-        let contentType:String?
+    public struct ContentMetaData: Codable {
+        public let contentId: String?
+        public let contentType: String?
         
-        private enum CodingKeys:String, CodingKey {
+        private enum CodingKeys: String, CodingKey {
             case contentId = "id"
             case contentType
         }
