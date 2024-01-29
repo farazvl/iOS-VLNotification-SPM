@@ -17,12 +17,15 @@ struct VLPlayerUpdatePayloadParser: VLEventPayloadParser {
         else {
             throw VLEventParseError.dataParseError
         }
-        return try parsePlayerStatusPayload(payloadData: payloadData)
+        return try parsePlayerStatusPayload(with: payloadData, for: eventPayload.contentMetadata)
     }
     
-    private func parsePlayerStatusPayload(payloadData: Data) throws -> VLPlayerUpdatePayload {
-        guard let playerUpdate = try? JSONDecoder().decode(VLPlayerUpdatePayload.self, from: payloadData) else {
+    private func parsePlayerStatusPayload(with payloadData:Data, for contentMetadata:VLEventPayload.ContentMetadata?) throws -> VLPlayerUpdatePayload {
+        guard var playerUpdate = try? JSONDecoder().decode(VLPlayerUpdatePayload.self, from: payloadData) else {
             throw VLEventParseError.playerUpdatePayloadParseError
+        }
+        if let contentMetadata {
+            playerUpdate.updateContentMetadata(contentMetadata: contentMetadata)
         }
         return playerUpdate
     }
